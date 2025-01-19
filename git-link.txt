@@ -1,0 +1,24 @@
+Local-Location: C:\Users\kirkumar\Desktop\pythonProject1\venv\Web-tools_Automation
+
+1. git init -> to initilize the git and create empty repository
+
+2. git remote add origin https://github.com/Monter-Projects/Webtools_Automation.git  -> it will connect git(local repository) and github(remote repository)
+
+github repository link: https://github.com/Monter-Projects/Webtools_Automation.git
+
+3. Before commit the code. login to github account
+git config --global user.name "Monter-Projects"
+git config --global user.password "montersolutions@gmail.com"
+
+4. git status -> to check the latest status
+
+5. git add -a -> it will add all the files to staging area(it will send all your files to git(local-repository)
+
+6. git commit -m "first commit" -> It will push whole code to git(local-repository)
+
+7. git push -u origin master -> It will push entire code to github repository
+
+8. git pull -> it will pull all the changes
+
+need to push these changes to
+
