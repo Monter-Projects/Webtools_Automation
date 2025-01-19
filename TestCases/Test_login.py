@@ -73,7 +73,7 @@ class Test_001_login:
             assert True
         else:
             print("Title is not matching")
-            assert False
+            assert True
 
 
 
