@@ -12,3 +12,30 @@
 2025-01-20 21:02:57,957 - root - INFO - *************** Test_login test is passed ******************
 2025-01-20 21:03:01,662 - root - INFO - *************** Test_logout test started ******************
 2025-01-20 21:03:04,198 - root - INFO - *************** Test_logout test passed ******************
+2025-01-20 21:31:23,269 - root - INFO - *************** Test_Title ******************
+2025-01-20 21:31:23,270 - root - INFO - *************** Verify_Home-Page_Title ******************
+2025-01-20 21:34:12,530 - root - INFO - *************** Test_Title ******************
+2025-01-20 21:34:12,530 - root - INFO - *************** Verify_Home-Page_Title ******************
+2025-01-20 21:34:13,769 - root - INFO - *************** Verify_Home-Page_Title Passed ******************
+2025-01-20 21:34:17,850 - root - INFO - *************** Test_login test started ******************
+2025-01-20 21:34:20,015 - root - INFO - *************** Test_login test is passed ******************
+2025-01-20 21:34:23,591 - root - INFO - *************** Test_logout test started ******************
+2025-01-20 21:34:26,466 - root - INFO - *************** Test_logout test passed ******************
+2025-01-20 21:34:58,744 - root - INFO - *************** Test_Title ******************
+2025-01-20 21:34:58,744 - root - INFO - *************** Verify_Home-Page_Title ******************
+2025-01-20 21:35:01,773 - root - INFO - *************** Verify_Home-Page_Title Passed ******************
+2025-01-20 21:35:07,984 - root - INFO - *************** Test_login test started ******************
+2025-01-20 21:35:11,709 - root - INFO - *************** Test_login test is passed ******************
+2025-01-20 21:35:18,483 - root - INFO - *************** Test_logout test started ******************
+2025-01-20 21:35:22,813 - root - INFO - *************** Test_logout test passed ******************
+2025-01-20 21:35:53,354 - root - INFO - *************** Test_Title ******************
+2025-01-20 21:35:53,354 - root - INFO - *************** Verify_Home-Page_Title ******************
+2025-01-20 21:37:40,411 - root - INFO - *************** Test_Title ******************
+2025-01-20 21:37:40,412 - root - INFO - *************** Verify_Home-Page_Title ******************
+2025-01-20 21:37:41,658 - root - INFO - *************** Verify_Home-Page_Title Passed ******************
+2025-01-20 21:37:45,403 - root - INFO - *************** Test_login test started ******************
+2025-01-20 21:37:47,806 - root - INFO - *************** Test_login test is passed ******************
+2025-01-20 21:37:51,577 - root - INFO - *************** Test_logout test started ******************
+2025-01-20 21:37:53,650 - root - INFO - *************** Test_logout test passed ******************
+2025-01-20 21:38:20,254 - root - INFO - *************** Test_Title ******************
+2025-01-20 21:38:20,254 - root - INFO - *************** Verify_Home-Page_Title ******************
