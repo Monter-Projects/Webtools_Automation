@@ -6,6 +6,7 @@ from PageObjects.LoginPage import Login
 from selenium.webdriver.common.action_chains import ActionChains
 from Utilites.ReadProperties import readconfig
 from Utilites.CustomLogger import LogGen
+import pytest_html
 
 class Test_001_login:
     baseurl = readconfig.getappurl()

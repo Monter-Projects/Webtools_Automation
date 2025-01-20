@@ -1,5 +1,7 @@
 import pytest
 from selenium import webdriver
+import pytest_html
+import pytest_metadata
 
 @pytest.fixture()
 def setup(browser):
@@ -20,6 +22,15 @@ def pytest_addoption(parser):
 @pytest.fixture()
 def browser(request):
     return request.config.getoption("--browser")
+
+########## Pytest HTML report ######################
+@pytest.hookimpl(optionalhook=True)
+def pytest_metadata(metadata):
+    metadata.pop("JAVA_HOME", None)
+    metadata.pop("Plugins", None)
+
+
+
 
 
 
