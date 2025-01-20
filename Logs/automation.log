@@ -1,0 +1,14 @@
+2025-01-20 21:01:12,014 - root - INFO - *************** Test_Title ******************
+2025-01-20 21:01:12,015 - root - INFO - *************** Verify_Home-Page_Title ******************
+2025-01-20 21:01:13,639 - root - INFO - *************** Verify_Home-Page_Title Passed ******************
+2025-01-20 21:01:17,621 - root - INFO - *************** Test_login test started ******************
+2025-01-20 21:01:19,806 - root - INFO - *************** Test_login test is passed ******************
+2025-01-20 21:01:23,661 - root - INFO - *************** Test_logout test started ******************
+2025-01-20 21:01:26,174 - root - INFO - *************** Test_logout test passed ******************
+2025-01-20 21:02:50,836 - root - INFO - *************** Test_Title ******************
+2025-01-20 21:02:50,836 - root - INFO - *************** Verify_Home-Page_Title ******************
+2025-01-20 21:02:52,324 - root - INFO - *************** Verify_Home-Page_Title Passed ******************
+2025-01-20 21:02:56,079 - root - INFO - *************** Test_login test started ******************
+2025-01-20 21:02:57,957 - root - INFO - *************** Test_login test is passed ******************
+2025-01-20 21:03:01,662 - root - INFO - *************** Test_logout test started ******************
+2025-01-20 21:03:04,198 - root - INFO - *************** Test_logout test passed ******************
