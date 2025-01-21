@@ -9,6 +9,7 @@ from Utilites.CustomLogger import LogGen
 from Utilites import XLUtils
 import openpyxl
 import pytest_html
+from selenium.webdriver.support import expected_conditions as EC
 
 class Test_002_DDT_login:
     baseurl = readconfig.getappurl()
@@ -32,10 +33,11 @@ class Test_002_DDT_login:
             self.lp.set_username(self.username)
             self.lp.set_password(self.password)
             self.lp.login_click()
-            #time.sleep(5)
-            act_title = self.driver.title
-            exp_title = "Swag Labs"
-            if act_title == exp_title:
+            correct_url = self.driver.current_url
+            print(correct_url)
+            expected_url = "https://www.saucedemo.com/inventory.html"
+            time.sleep(5)
+            if correct_url == expected_url:
                 if self.exp == "Pass":
                     self.lp.logout_click()
                     self.lp.logout_link()
@@ -48,11 +50,8 @@ class Test_002_DDT_login:
                     self.logger.info("*************** Test_002_DDT_login Execution Failed ******************")
                     print("Test-case is Failed")
                     result_lst.append("Fail")
-            elif act_title != exp_title:
+            elif correct_url != expected_url:
                 if self.exp == "Fail":
-                    #self.driver.close()
-                    self.lp.logout_click()
-                    self.lp.logout_link()
                     print("Test-case is Passed")
                     self.logger.info("*************** Test_002_DDT_login Passed ******************")
                     result_lst.append("Pass")
