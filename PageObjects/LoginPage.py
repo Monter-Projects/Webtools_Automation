@@ -8,6 +8,7 @@ class Login:
     login_button = "//*[@id= 'login-button']"
     sidebar_logout = "// *[ @ id = 'react-burger-menu-btn']"
     logout_link_id = "logout_sidebar_link"
+    product_data_xpath = "//*[@id='header_container']/div[2]/span"
 
 
 
@@ -33,6 +34,9 @@ class Login:
 
     def escape(self):
         ActionChains(self.driver).send_keys(Keys.ESCAPE).perform()
+
+    def product_page(self):
+        self.driver.find_element(By.XPATH, self.product_data_xpath)
 
 
 
