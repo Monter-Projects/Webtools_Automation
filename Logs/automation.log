@@ -210,3 +210,78 @@
 2025-01-21 23:57:00,536 - root - INFO - *************** Test_002_DDT_login Execution Passed ******************
 2025-01-21 23:57:05,961 - root - INFO - *************** Test_002_DDT_login Passed ******************
 2025-01-21 23:57:05,962 - root - INFO - *************** Test_002_DDT_login Passed ******************
+2025-01-22 00:03:11,435 - root - INFO - *************** Test_002_DDT_login ******************
+2025-01-22 00:03:11,435 - root - INFO - *************** Verify_Different_login test started ******************
+2025-01-22 00:03:18,415 - root - INFO - *************** Test_002_DDT_login Execution Failed ********
+2025-01-22 00:03:23,942 - root - INFO - *************** Test_002_DDT_login Passed ******************
+2025-01-22 00:03:29,387 - root - INFO - *************** Test_002_DDT_login Passed ******************
+2025-01-22 00:03:34,829 - root - INFO - *************** Test_002_DDT_login Passed ******************
+2025-01-22 00:03:40,215 - root - INFO - *************** Test_002_DDT_login Passed ******************
+2025-01-22 00:03:45,607 - root - INFO - *************** Test_002_DDT_login Passed ******************
+2025-01-22 00:03:45,608 - root - INFO - *************** Test_002_DDT_login Failed ******************
+2025-01-22 00:04:20,798 - root - INFO - *************** Test_002_DDT_login ******************
+2025-01-22 00:04:20,798 - root - INFO - *************** Verify_Different_login test started ******************
+2025-01-22 00:04:27,767 - root - INFO - *************** Test_002_DDT_login Execution Failed ********
+2025-01-22 00:04:33,265 - root - INFO - *************** Test_002_DDT_login Execution Failed ********
+2025-01-22 00:04:38,780 - root - INFO - *************** Test_002_DDT_login Execution Failed ********
+2025-01-22 00:04:44,287 - root - INFO - *************** Test_002_DDT_login Execution Failed ********
+2025-01-22 00:04:49,763 - root - INFO - *************** Test_002_DDT_login Execution Failed ********
+2025-01-22 00:04:55,265 - root - INFO - *************** Test_002_DDT_login Execution Failed ********
+2025-01-22 00:04:55,265 - root - INFO - *************** Test_002_DDT_login Failed ******************
+2025-01-22 21:20:32,966 - root - INFO - *************** Test_Title ******************
+2025-01-22 21:20:32,967 - root - INFO - *************** Verify_Home-Page_Title ******************
+2025-01-22 21:20:38,100 - root - INFO - *************** Test_login test started ******************
+2025-01-22 21:20:42,870 - root - INFO - *************** Test_logout test started ******************
+2025-01-22 21:22:37,498 - root - INFO - *************** Test_Title ******************
+2025-01-22 21:22:37,499 - root - INFO - *************** Verify_Home-Page_Title ******************
+2025-01-22 21:22:41,018 - root - INFO - *************** Test_login test started ******************
+2025-01-22 21:22:44,261 - root - INFO - *************** Test_logout test started ******************
+2025-01-22 21:24:10,540 - root - INFO - *************** Test_Title ******************
+2025-01-22 21:24:10,541 - root - INFO - *************** Verify_Home-Page_Title ******************
+2025-01-22 21:24:11,688 - root - INFO - *************** Verify_Home-Page_Title Passed ******************
+2025-01-22 21:24:14,533 - root - INFO - *************** Test_login test started ******************
+2025-01-22 21:24:16,443 - root - INFO - *************** Test_login test is passed ******************
+2025-01-22 21:24:19,391 - root - INFO - *************** Test_logout test started ******************
+2025-01-22 21:24:21,551 - root - INFO - *************** Test_logout test passed ******************
+2025-01-23 22:22:12,402 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:22:12,402 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:23:23,935 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:23:23,935 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:27:13,011 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:27:13,012 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:34:12,962 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:34:12,963 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:35:30,017 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:35:30,017 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:36:02,460 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:36:02,460 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:37:52,976 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:37:52,976 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:39:08,020 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:39:08,020 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:50:20,958 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:50:20,958 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:51:36,047 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:51:36,047 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:52:18,498 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:52:18,498 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:55:07,597 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:55:07,598 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:56:05,117 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:56:05,117 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:56:58,078 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:56:58,078 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 22:59:37,973 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 22:59:37,973 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 23:08:29,948 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 23:08:29,948 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 23:09:31,890 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 23:09:31,903 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 23:10:30,964 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 23:10:30,964 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 23:11:24,600 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 23:11:24,600 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 23:12:22,958 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 23:12:22,958 - root - INFO - *************** Verify_Button_functionality ******************
+2025-01-23 23:12:47,149 - root - INFO - *************** Test_Button_functions ******************
+2025-01-23 23:12:47,149 - root - INFO - *************** Verify_Button_functionality ******************

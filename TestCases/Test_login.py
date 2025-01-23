@@ -9,7 +9,7 @@ from Utilites.CustomLogger import LogGen
 import pytest_html
 
 class Test_001_login:
-    #baseurl = readconfig.getappurl()
+    baseurl = readconfig.getappurl()
     username = readconfig.get_username()
     password = readconfig.get_password()
 
