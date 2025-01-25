@@ -8,11 +8,11 @@ def setup(browser):
     if browser == 'Ie':
         driver = webdriver.Ie()
         driver.implicitly_wait(10)
-    elif browser == 'Firefox':
-        driver = webdriver.Firefox()
+    elif browser == 'Chrome':
+        driver = webdriver.Chrome()
         driver.implicitly_wait(10)
     else:
-        driver = webdriver.Chrome()
+        driver = webdriver.Firefox()
         driver.implicitly_wait(10)
     return driver
 

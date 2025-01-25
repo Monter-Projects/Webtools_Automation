@@ -11,73 +11,74 @@ from PageObjects.button_funtions import Button_checks
 
 class Test_001_button_checks:
     baseurl = readconfig.getappurl()
-    username = readconfig.get_username()
-    password = readconfig.get_password()
+    username = readconfig.get_webtoolsusername()
+    password = readconfig.get_webtoolspassword()
     logger = LogGen.loggen()
 
-    def test_button_functions(self, setup):
-        self.logger.info("*************** Test_Button_functions ******************")
-        self.logger.info("*************** Verify_Button_functionality ******************")
+    # Test-Case to test Docs link
+    def test_button_function_docs(self, setup):
+        self.logger.info("*************** Test_Button_Docs_functions ******************")
+        self.logger.info("*************** Verify_Docs_Button_functionality ******************")
+        Docs_title = "WebTools | My Docs"
+        Configure_title = "Configure"
+        Fsr_url = "https://10.210.219.37/wt4/brhome?lang=en"
+        Home_title = "WebTools"
         self.driver = setup
         self.driver.get(self.baseurl)
-        self.lp = Login(self.driver)
-        self.lp.set_username(self.username)
-        self.lp.set_password(self.password)
-        self.lp.login_click()
-        #golden_urls = ["https://saucelabs.com/request-demo", "https://saucelabs.com/sign-up", "https://saucelabs.com/products"
-                       #"https://saucelabs.com/resources/case-studies/verizon-media-accelerates-millions-of-tests-every-month-using-open-source-technology-and-sauce-labs",
-                       #"https://saucelabs.com/resources/case-studies/walmart-embraces-test-automation-and-open-source-to-increase-coverage-and-deploy-more-often",
-                       #"https://saucelabs.com/sign-up", "https://saucelabs.com/request-demo"]
-        results = []
-        url_results = []
-        # Comparision variables
-        request_demo_url = "https://saucelabs.com/request-demo"
-        test_for_free_url = "https://saucelabs.com/sign-up"
-        learn_more_url = "https://saucelabs.com/products"
-        case_study1_url = "https://saucelabs.com/resources/case-studies/verizon-media-accelerates-millions-of-tests-every-month-using-open-source-technology-and-sauce-labs"
-        case_study2_url = "https://saucelabs.com/resources/case-studies/walmart-embraces-test-automation-and-open-source-to-increase-coverage-and-deploy-more-often"
-        sign_up_path_url = "https://saucelabs.com/sign-up"
-        last_request_demo_xpath_url = "https://saucelabs.com/request-demo"
-        self.lp.logout_click()
-        #self.lp.driver.maximize_window()
         self.bc = Button_checks(self.driver)
-        self.bc.about() # clicking the about button
-        time.sleep(5)
-        #button_methods = [self.bc.request_demo, self.bc.try_it_free, self.bc.learn_more, self.bc.read_case,
-            #              self.bc.read_case1, self.bc.signup, self.bc.last_request]
-        self.bc.request_demo()
-        url_results.append(self.driver.current_url)
-        self.driver.back()
+        self.bc.Advanced()
+        self.bc.Proceed()
+        self.bc.Docs() # clicking the about button
+        current_title = self.driver.title
+        if current_title == Docs_title:
+            self.logger.info("*************** Docs_Check_passed ******************")
+            print("Docs_check_test_is_passed")
+            self.driver.close()
+            assert True
+        elif current_title != Docs_title:
+            self.logger.info("*************** Docs_Check_failed ******************")
+            print("Docs_check_test_is_failed")
+            self.driver.close()
+            assert False
+        else:
+            self.logger.info("*************** Problem in searching element on the page ******************")
+            print("Problem in searching element on the page")
+            self.driver.close()
+            assert False
 
-
-        ''''
-        self.bc.try_it_free()
-        url_results.append(self.driver.current_url)
-        self.driver.back()
-        time.sleep(5)
-        self.bc.learn_more()
-        url_results.append(self.driver.current_url)
-        self.driver.back()
-        time.sleep(5)
-        self.bc.read_case()
-        url_results.append(self.driver.current_url)
-        self.driver.back()
-        time.sleep(5)
-        self.bc.read_case1()
-        url_results.append(self.driver.current_url)
-        self.driver.back()
-        time.sleep(5)
-        self.bc.signup()
-        url_results.append(self.driver.current_url)
-        self.driver.back()
-        time.sleep(5)
-        self.bc.last_request()
-        url_results.append(self.driver.current_url)
-        self.driver.back()
-        time.sleep(5)
-        print(url_results)
-'''
-
+    # Test-case to test configure function
+    def test_button_function_configure(self, setup):
+        self.logger.info("*************** Test_Button_configure_functions ******************")
+        self.logger.info("*************** Verify_Docs_configure_functionality ******************")
+        Configure_title = "Configure"
+        Fsr_url = "https://10.210.219.37/wt4/brhome?lang=en"
+        Home_title = "WebTools"
+        self.driver = setup
+        self.driver.get(self.baseurl)
+        self.bc = Button_checks(self.driver)
+        self.bc.Advanced()
+        self.bc.Proceed()
+        self.bc.Configure()  # clicking the configure button
+        self.lp = Login(self.driver)
+        self.lp.set_webtools_username(self.username)
+        self.lp.set_webtools_password(self.password)
+        self.bc.login()
+        current_title = self.driver.title
+        if current_title == Configure_title:
+            self.logger.info("*************** Configure_Check_passed ******************")
+            print("Configure_check_test_is_passed")
+            self.driver.close()
+            assert True
+        elif current_title != Configure_title:
+            self.logger.info("*************** Docs_Check_failed ******************")
+            print("Configure_check_test_is_failed")
+            self.driver.close()
+            assert False
+        else:
+            self.logger.info("*************** Problem in searching element on the page ******************")
+            print("Problem in searching element on the page")
+            self.driver.close()
+            assert False
 
 
 

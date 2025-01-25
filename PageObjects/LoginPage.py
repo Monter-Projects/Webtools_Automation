@@ -9,6 +9,8 @@ class Login:
     sidebar_logout = "// *[ @ id = 'react-burger-menu-btn']"
     logout_link_id = "logout_sidebar_link"
     product_data_xpath = "//*[@id='header_container']/div[2]/span"
+    webtools_user_xpath = "//*[@id='inputIcon']"
+    webtools_pass_xpath = "//*[@id='newpwd']"
 
 
 
@@ -22,6 +24,14 @@ class Login:
     def set_password(self,password):
         self.driver.find_element(By.XPATH, self.password_xpath).clear()
         self.driver.find_element(By.XPATH, self.password_xpath).send_keys(password)
+
+    def set_webtools_username(self,username):
+        self.driver.find_element(By.XPATH, self.webtools_user_xpath).clear()
+        self.driver.find_element(By.XPATH, self.webtools_user_xpath).send_keys(username)
+
+    def set_webtools_password(self,password):
+        self.driver.find_element(By.XPATH, self.webtools_pass_xpath).clear()
+        self.driver.find_element(By.XPATH, self.webtools_pass_xpath).send_keys(password)
 
     def login_click(self):
         self.driver.find_element(By.XPATH, self.login_button).click()

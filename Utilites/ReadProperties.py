@@ -8,7 +8,7 @@ config.read(".\\Configuration\\config.ini")
 class readconfig():
     @staticmethod
     def getappurl():
-        url = config.get('common data', 'baseurl')
+        url = config.get('common data', 'webtoolsUrl')
         return url
 
     '''
@@ -32,4 +32,13 @@ class readconfig():
         password = config.get('common data', 'password')
         return password
 
+    @staticmethod
+    def get_webtoolsusername():
+        username = config.get('common data', 'Webtools_username')
+        return username
+
+    @staticmethod
+    def get_webtoolspassword():
+        password = config.get('common data', 'Webtools_password')
+        return password
 
