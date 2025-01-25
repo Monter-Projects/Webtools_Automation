@@ -18,6 +18,7 @@ class Button_checks:
     '''
 
     #Docs_xpath = "//*[@id='id-docs-tab']/svg"
+    # Webtools mainpage clicks
     Docs_id = "Combined-Shape"
     Configure_id = "id-configure-tab"
     Fsr_id = "id-fiery-backup-restore-tab"
@@ -25,6 +26,16 @@ class Button_checks:
     Advanced_xpath = "//*[@id='details-button']"
     Proceed_xpath = "//*[@id='proceed-link']"
     Login_id = "loginBtn"
+
+    #configure clicks
+    Job_submission_id = "tab_job_submission"
+    Job_management_id = "tab_job_management"
+    Job_network_id = "tab_network"
+    Job_security_id = "tab_security"
+    Job_rip_id = "tab_rip"
+    Job_scan_id = "tab_scan"
+    Job_user_acc_id = "tab_user_accounts"
+    fiery_server_id = "tab_fiery_server"
     # actiont to start driver
     def __init__(self,driver):
         self.driver = driver
@@ -48,6 +59,10 @@ class Button_checks:
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Configure_id)))
         element.click()
 
+    def fiery_server(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.fiery_server_id)))
+        element.click()
+
     # action for Fsr button
     def Fsr(self):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Fsr_id)))
@@ -61,35 +76,39 @@ class Button_checks:
     def Homepage(self):
         self.driver.find_element(By.XPATH, self.Home_xpath).click()
 
-    '''
-    # action for read_case button
-    def read_case(self):
-        self.driver.find_element(By.XPATH, self.read_case_study_xpath).click()
+    def job_submission(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Job_submission_id)))
+        element.click()
 
-    # action for read_case1 button
-    def read_case1(self):
-        self.driver.find_element(By.XPATH, self.read_case_study1_xpath).click()
+    def job_management(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Job_management_id)))
+        element.click()
 
-    # action for signup button
-    def signup(self):
-        self.driver.find_element(By.XPATH, self.sign_up_xpath).click()
+    def network(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Job_network_id)))
+        element.click()
 
-    # action for last_request button
-    def last_request(self):
-        self.driver.find_element(By.XPATH, self.last_request_demo_xpath).click()
-'''
+    def security(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Job_security_id)))
+        element.click()
+
+    def rip(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Job_rip_id)))
+        element.click()
+
+    def scan(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Job_scan_id)))
+        element.click()
+
+    def user_acc(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Job_user_acc_id)))
+        element.click()
 
 
 
 
 
-#About_Tiltle = "CrazyEgg Tracking iframe"
-#request_demo_url = "https://saucelabs.com/request-demo"
-#test_for_free = "https://saucelabs.com/sign-up"
-#learn more = "https://saucelabs.com/products"
-#case_study1 = "https://saucelabs.com/resources/case-studies/verizon-media-accelerates-millions-of-tests-every-month-using-open-source-technology-and-sauce-labs"
-#case_study2 = "https://saucelabs.com/resources/case-studies/walmart-embraces-test-automation-and-open-source-to-increase-coverage-and-deploy-more-often"
-#sign_up_path = "https://saucelabs.com/sign-up"
-#last_request_demo_xpath = "https://saucelabs.com/request-demo"
+
+
 
 
