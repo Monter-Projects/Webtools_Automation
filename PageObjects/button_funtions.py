@@ -36,6 +36,13 @@ class Button_checks:
     Job_scan_id = "tab_scan"
     Job_user_acc_id = "tab_user_accounts"
     fiery_server_id = "tab_fiery_server"
+
+    Docs_button_id = "id-login-btn"
+    Docs_login_button_id = "id-docs-login-btn"
+    Docs_printed_id = "id-printed-sub-tab"
+    Docs_held_id = "id-held-sub-tab"
+    Docs_logout_id = "id-docs-logout-link"
+    Docs_logout_message_id = "id-docs-welcome-msg"
     # actiont to start driver
     def __init__(self,driver):
         self.driver = driver
@@ -58,6 +65,33 @@ class Button_checks:
     def Configure(self):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Configure_id)))
         element.click()
+
+    def docs_button(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Docs_button_id)))
+        element.click()
+
+    def docs_login_button(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Docs_login_button_id)))
+        element.click()
+
+    def docs_printed(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Docs_printed_id)))
+        element.click()
+
+
+    def docs_held(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Docs_held_id)))
+        element.click()
+
+    def docs_logout(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Docs_logout_id)))
+        element.click()
+
+    def docs_logout_message(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Docs_logout_message_id)))
+        message = element.text.strip()
+        print("Logout message:", message)
+        return message
 
     def fiery_server(self):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.fiery_server_id)))

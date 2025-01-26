@@ -262,6 +262,88 @@ class Test_001_button_checks:
             assert False
 
 
+    # Test case for Docs login
+    def test_docs_login(self, setup):
+        self.logger.info("*************** Test_Docs_login_functions ******************")
+        self.logger.info("*************** Verify_Docs_login_functionality ******************")
+        Docs_title = "WebTools | My Docs"
+        self.driver = setup
+        self.driver.get(self.baseurl)
+        self.bc = Button_checks(self.driver)
+        self.bc.Advanced()
+        self.bc.Proceed()
+        self.bc.Docs() # clicking the about button
+        current_title = self.driver.title
+        if current_title == Docs_title:
+            self.logger.info("*************** Docs_Check_passed ******************")
+            print("Docs_check_test_is_passed")
+            self.bc.docs_button()
+            self.lp = Login(self.driver)
+            self.lp.set_docs_username(self.username)
+            self.lp.set_docs_password(self.password)
+
+            # check Docs login button functionality
+            self.bc.docs_login_button()
+            time.sleep(5)
+            docs_title = self.driver.current_url
+            if "mydocs" in docs_title:
+                self.logger.info("*************** Docs_login_sucessful ******************")
+                print("Docs login sucessful")
+            else:
+                self.logger.info("*************** Docs_login_failed ******************")
+                print("Docs login failed")
+                self.driver.close()
+                assert False
+
+            # check Docs printed button functionality
+            self.bc.docs_printed()
+            docs_print_title = self.driver.current_url
+            if "printed" in docs_print_title:
+                self.logger.info("*************** Printed_Docs_check_sucessful ******************")
+                print("Printed_Docs_check_sucessful")
+            else:
+                self.logger.info("*************** Printed_Docs_check_failed ******************")
+                print("Printed_Docs_check_failed")
+                self.driver.close()
+                assert False
+
+            # check Docs held button functionality
+            self.bc.docs_held()
+            docs_held_title = self.driver.current_url
+            if "held" in docs_held_title:
+                self.logger.info("*************** Held_Docs_check_sucessful ******************")
+                print("Held_Docs_check_sucessful")
+            else:
+                self.logger.info("*************** Held_Docs_check_failed ******************")
+                print("Held_Docs_check_failed")
+                self.driver.close()
+                assert False
+
+            message = self.bc.docs_logout()
+            time.sleep(5)
+            print("Message is: ", message)
+            if message is None:
+                self.logger.info("*************** Docs_logout_sucessful ******************")
+                print("Docs_logout_sucessful")
+                assert True
+            else:
+                self.logger.info("*************** Docs_logout_failed ******************")
+                print("Docs_logut_failed")
+                self.driver.close()
+                assert False
+
+        elif current_title != Docs_title:
+            self.logger.info("*************** Docs_Check_failed ******************")
+            print("Docs_check_test_is_failed")
+            self.driver.close()
+            assert False
+        else:
+            self.logger.info("*************** Problem in searching element on the page ******************")
+            print("Problem in searching element on the page")
+            self.driver.close()
+            assert False
+
+
 
 
 

@@ -11,6 +11,8 @@ class Login:
     product_data_xpath = "//*[@id='header_container']/div[2]/span"
     webtools_user_xpath = "//*[@id='inputIcon']"
     webtools_pass_xpath = "//*[@id='newpwd']"
+    docs_user_id = "login_username"
+    docs_pass_id = "login_password"
 
 
 
@@ -32,6 +34,14 @@ class Login:
     def set_webtools_password(self,password):
         self.driver.find_element(By.XPATH, self.webtools_pass_xpath).clear()
         self.driver.find_element(By.XPATH, self.webtools_pass_xpath).send_keys(password)
+
+    def set_docs_username(self,username):
+        self.driver.find_element(By.ID, self.docs_user_id).clear()
+        self.driver.find_element(By.ID, self.docs_user_id).send_keys(username)
+
+    def set_docs_password(self,password):
+        self.driver.find_element(By.ID, self.docs_pass_id).clear()
+        self.driver.find_element(By.ID, self.docs_pass_id).send_keys(password)
 
     def login_click(self):
         self.driver.find_element(By.XPATH, self.login_button).click()
