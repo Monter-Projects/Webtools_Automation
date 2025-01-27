@@ -43,6 +43,9 @@ class Button_checks:
     Docs_held_id = "id-held-sub-tab"
     Docs_logout_id = "id-docs-logout-link"
     Docs_logout_message_id = "id-docs-welcome-msg"
+
+    Manage_button_id = "id-manage-launch-link"
+    Fiery_icon_xpath = "//*[@id='id-header']/div/div[2]/a/img"
     # actiont to start driver
     def __init__(self,driver):
         self.driver = driver
@@ -53,6 +56,14 @@ class Button_checks:
 
     def Advanced(self):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.Advanced_xpath)))
+        element.click()
+
+    def Manage(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Manage_button_id)))
+        element.click()
+
+    def Fiery_icon(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.Fiery_icon_xpath)))
         element.click()
 
     # action for Docs button
