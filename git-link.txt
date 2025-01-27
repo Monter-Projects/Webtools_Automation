@@ -22,3 +22,15 @@ git config --global user.password "montersolutions@gmail.com"
 
 need to push these changes to
 
+
+command to run entire tests
+
+pytest -v -s  .\TestCases\Test_button.py --browser Chrome
+
+command to run single test
+
+pytest -v -s  .\TestCases\Test_button.py -k test_Home_fiery_icon --browser Chrome
+
+command to run multiple tests
+pytest -v -s  .\TestCases\Test_button.py -k "test_Home_fiery_icon or test_Manage_page or test_button_function_webtools_FSR" --browser Chrome
+

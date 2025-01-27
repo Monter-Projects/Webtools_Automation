@@ -46,6 +46,7 @@ class Button_checks:
 
     Manage_button_id = "id-manage-launch-link"
     Fiery_icon_xpath = "//*[@id='id-header']/div/div[2]/a/img"
+    check_for_updates_id = "id-check-for-update-link"
     # actiont to start driver
     def __init__(self,driver):
         self.driver = driver
@@ -64,6 +65,10 @@ class Button_checks:
 
     def Fiery_icon(self):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.Fiery_icon_xpath)))
+        element.click()
+
+    def check_updates(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.check_for_updates_id)))
         element.click()
 
     # action for Docs button

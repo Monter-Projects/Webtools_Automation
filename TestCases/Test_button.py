@@ -345,7 +345,7 @@ class Test_001_button_checks:
             assert False
 
     #Test case to check home page manage clicks
-    def test_Home_page(self, setup):
+    def test_Manage_page(self, setup):
         self.logger.info("*************** Home_Page_click_functions ******************")
         self.logger.info("*************** Home_Page_click_functionality ******************")
         Home_page_title = "WebTools"
@@ -375,6 +375,7 @@ class Test_001_button_checks:
                 self.driver.close()
                 assert False
 
+    # Test case to check fiery icon click on home page
     def test_Home_fiery_icon(self, setup):
         self.logger.info("*************** Home_Page_click_functions ******************")
         self.logger.info("*************** Home_Page_click_functionality ******************")
@@ -395,15 +396,48 @@ class Test_001_button_checks:
             self.driver.switch_to.window(window_handles[-1])
             windows_title = self.driver.title
             if windows_title == Fiery_Icon_title:
-                self.logger.info("*************** Manage_button_click_passed ******************")
-                print("Manage page got launched sucessfully")
+                self.logger.info("*************** Fiery_Icon_click_passed ******************")
+                print("Fiery_Icon page got launched sucessfully")
                 self.driver.close()
                 assert True
             elif windows_title != Fiery_Icon_title:
-                self.logger.info("*************** Manage_button_click_failed ******************")
-                print("Manage page got launched failed")
+                self.logger.info("*************** Fiery_Icon_click_failed ******************")
+                print("Fiery_Icon page got launched failed")
                 self.driver.close()
                 assert False
+
+    # Test case to check fiery icon click on home page
+    def test_check_updates(self, setup):
+        self.logger.info("*************** Home_Page_click_functions ******************")
+        self.logger.info("*************** Home_Page_click_functionality ******************")
+        Home_page_title = "WebTools"
+        check_updates = "Fiery WebUpdater"
+        self.driver = setup
+        self.driver.get(self.baseurl)
+        self.bc = Button_checks(self.driver)
+        self.bc.Advanced()
+        self.bc.Proceed() # It will point to home page
+        time.sleep(2)
+        current_title = self.driver.title
+        if current_title == Home_page_title:
+            self.logger.info("*************** Home_Page_click_passed ******************")
+            print("Home_Page_click_test_is_passed")
+            self.bc.check_updates()
+            time.sleep(5)
+            window_handles = self.driver.window_handles
+            self.driver.switch_to.window(window_handles[-1])
+            windows_title = self.driver.title
+            if windows_title == check_updates:
+                self.logger.info("*************** check_for_updates_click_passed ******************")
+                print("check_for_updates got launched sucessfully")
+                self.driver.close()
+                assert True
+            elif windows_title != check_updates:
+                self.logger.info("*************** check_for_updates_click_failed ******************")
+                print("check_for_updates got launched failed")
+                self.driver.close()
+                assert False
+
 
 
 
