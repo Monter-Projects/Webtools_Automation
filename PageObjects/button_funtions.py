@@ -47,6 +47,11 @@ class Button_checks:
     Manage_button_id = "id-manage-launch-link"
     Fiery_icon_xpath = "//*[@id='id-header']/div/div[2]/a/img"
     check_for_updates_id = "id-check-for-update-link"
+    Fiery_license_agree_id = "id-license-agreement-link"
+    Fiery_eula_id = "id-efi-eula-link"
+    open_source_license_agree_id = "id-efi-osla-link"
+    backupRestore_id = "fsr"
+    resourceSettings_id = "br"
     # actiont to start driver
     def __init__(self,driver):
         self.driver = driver
@@ -69,6 +74,26 @@ class Button_checks:
 
     def check_updates(self):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.check_for_updates_id)))
+        element.click()
+
+    def Fiery_license(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Fiery_license_agree_id)))
+        element.click()
+
+    def Fiery_eula(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Fiery_eula_id)))
+        element.click()
+
+    def open_source_license(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.open_source_license_agree_id)))
+        element.click()
+
+    def br(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.backupRestore_id)))
+        element.click()
+
+    def resourceSettings(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.resourceSettings_id)))
         element.click()
 
     # action for Docs button
