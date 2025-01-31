@@ -553,43 +553,43 @@ class Test_001_button_checks:
             Server_name_text = self.bc.Fiery_server_configure()
             configure_option_text["Server_name"]= Server_name_text
             self.outside_click()
-
+            time.sleep(2)
             #ipv4 option check
             self.bc.ipv4()
             ipv4_name_text = self.bc.ipv4_text()
             configure_option_text["IPv4_address"] = ipv4_name_text
             self.outside_click()
-
+            time.sleep(2)
             #ipv6 option check
             self.bc.ipv6()
             ipv6_name_text = self.bc.ipv6_text()
             configure_option_text["IPv6_address"] = ipv6_name_text
             self.outside_click()
-
+            time.sleep(2)
             #regional option check
             self.bc.regional()
             regional_name_text = self.bc.regional_text()
             configure_option_text["Regional Settings"] = regional_name_text
             self.outside_click()
-
+            time.sleep(2)
             #character option check
             self.bc.character()
             character_name_text = self.bc.character_text()
             configure_option_text["Use Character Set"] = character_name_text
             self.outside_click()
-
+            time.sleep(2)
             #print start option check
             self.bc.print_start()
             print_start_text = self.bc.print_start_text()
             configure_option_text["Print Start Page"] = print_start_text
             self.outside_click()
-
+            time.sleep(2)
             #system-update option check
             self.bc.system_update()
             system_update_text = self.bc.system_update_text()
             configure_option_text["System Updates"] = system_update_text
             self.outside_click()
-
+            time.sleep(2)
             if golden_configure_option_text == configure_option_text:
                 self.logger.info("*************** Fiery_Configure_Server_Click_Check_passed ******************")
                 print("Fiery_Configure_Server_Click_check_test_is_passed")
@@ -615,49 +615,49 @@ class Test_001_button_checks:
             print("Configure_check_test_is_passed")
             self.driver.maximize_window()
 
-            time.sleep(3)
+            time.sleep(2)
             # system logs option check
             self.bc.system_logs()
             system_log_text = self.bc.system_logs_text()
             configure_option_text["System Logs"] = system_log_text
             self.outside_click()
-
+            time.sleep(2)
             # job logs option check
             self.bc.jobs_logs()
             jobs_logs_text = self.bc.jobs_logs_text()
             configure_option_text["Job-log"] = jobs_logs_text
             self.outside_click()
-
+            time.sleep(2)
             # fiery support option check
             self.bc.fiery_support()
             fiery_support_text = self.bc.fiery_support_text()
             configure_option_text["Fiery Support Contact Information"] = fiery_support_text
             self.outside_click()
-
+            time.sleep(2)
             # print support option check
             self.bc.print_support()
             print_support_text = self.bc.print_support_text()
             configure_option_text["Printer Support Contact Information"] = print_support_text
             self.outside_click()
-
+            time.sleep(2)
             # backup option check
             self.bc.backup()
             backup_text = self.bc.backup_text()
             configure_option_text["Backup"] = backup_text
             self.outside_click()
-
+            time.sleep(2)
             #link restore option check
             self.bc.link_restore()
             link_restore_text = self.bc.link_restore_text()
             configure_option_text["Restore"] = link_restore_text
             self.outside_click()
-
+            time.sleep(2)
             #restore default option check
             self.bc.restore_default()
             restore_default_text = self.bc.restore_default_text()
             configure_option_text["Restore Default Fiery Settings"] = restore_default_text
             self.outside_click()
-
+            time.sleep(2)
             if golden_configure_option_text == configure_option_text:
                 self.logger.info("*************** Fiery_Configure_Server_Click_Check_passed ******************")
                 print("Fiery_Configure_Server_Click_check_test_is_passed")
