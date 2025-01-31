@@ -9,6 +9,8 @@ from Utilites.CustomLogger import LogGen
 import pytest_html
 from PageObjects.button_funtions import Button_checks
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class Test_001_button_checks:
     baseurl = readconfig.getappurl()
@@ -48,7 +50,7 @@ class Test_001_button_checks:
             assert False
 
     def outside_click(self):
-        outside_element = self.driver.find_element(By.TAG_NAME, "body")
+        outside_element = WebDriverWait.until(EC.element_to_be_clickable((By.TAG_NAME, "body")))
         actions = ActionChains(self.driver)
         actions.move_to_element(outside_element).click().perform()
 
