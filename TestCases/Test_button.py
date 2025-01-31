@@ -613,6 +613,7 @@ class Test_001_button_checks:
             print("Configure_check_test_is_passed")
             self.driver.maximize_window()
 
+            time.sleep(3)
             # system logs option check
             self.bc.system_logs()
             system_log_text = self.bc.system_logs_text()
