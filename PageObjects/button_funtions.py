@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+import time
 
 
 class Button_checks:
@@ -52,9 +53,194 @@ class Button_checks:
     open_source_license_agree_id = "id-efi-osla-link"
     backupRestore_id = "fsr"
     resourceSettings_id = "br"
+
+    #configure Fiery-server options check
+    Fiery_Server_option_xpath = "//*[@id='server_info_popup']/div[1]/h3"
+    ipv4_xpath = "//*[@id='ip_address_popup_title']/h3"
+    ipv6_xpath = "//*[@id='ipv6_address_popup']/div[1]/h3"
+    regional_xpath  = "//*[@id='regional_settings_popup']/div[1]/h3"
+    character_xpath = "//*[@id='use_character_set_popup']/div[1]/h3"
+    print_start_xpath  = "//*[@id='help_title']/h3"
+    system_update_xpath = "//*[@id='system_updates_popup']/div[1]/h3"
+    system_logs_xpath = "//*[@id='system_logs_popup']/div[1]/h3"
+    job_logs_xpath = "//*[@id='auto_joblog_popup']/div[1]/h3"
+    fiery_support_xpath = "//*[@id='fiery_support_popup']/div[1]/h3"
+    printer_support_xpath = "//*[@id='printer_support_popup']/div[1]/h3"
+    backup_xpath = "//*[@id='backup_popup_title']/h3"
+    restore_xpath = "//*[@id='restore_popup_title']/h3"
+    restore_default_xpath = "//*[@id='restore_default_popup_title']/h3"
+    Fiery_server_name_id = "link_server_name"
+
+    cancel_id = "cancel"
+
+    cancel_xpath = "//*[@id='cancel']"
+
+    ipv4_id = "link_server_ip_address"
+    ipv6_id = "link_server_ip_v6_enabled"
+    regional_id = "link_server_locale"
+    character_set_id = "link_server_use_character_set"
+    print_start_page_id = "link_server_print_start_page"
+    system_updates_id = "link_server_enable_system_updates"
+    system_logs_id = "link_server_enable_system_log"
+    job_log_id = "link_server_enable_joblog_auto_export"
+    fiery_support_id = "link_server_support_fiery_contact_name"
+    print_support_id = "link_server_support_printer_contact_name"
+    backup_id = "link_backup"
+    link_restore_id = "link_restore"
+    restore_default_id = "link_restore_default_fiery_settings"
     # actiont to start driver
     def __init__(self,driver):
         self.driver = driver
+
+    def restore_default(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.restore_default_id)))
+        element.click()
+
+    def restore_default_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.restore_default_xpath)))
+        text = element.text
+        return text
+
+
+    def link_restore(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.link_restore_id)))
+        element.click()
+
+    def link_restore_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.restore_xpath)))
+        text = element.text
+        return text
+
+    def backup(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.backup_id)))
+        element.click()
+
+    def backup_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.backup_xpath)))
+        text = element.text
+        return text
+
+    def print_support(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.print_support_id)))
+        element.click()
+
+    def print_support_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.printer_support_xpath)))
+        text = element.text
+        return text
+
+
+
+    def fiery_support(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.fiery_support_id)))
+        element.click()
+
+    def fiery_support_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.fiery_support_xpath)))
+        text = element.text
+        return text
+
+    def jobs_logs(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.job_log_id)))
+        element.click()
+
+    def jobs_logs_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.job_logs_xpath)))
+        text = element.text
+        return text
+
+    def system_logs(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.system_logs_id)))
+        element.click()
+
+    def system_logs_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.system_logs_xpath)))
+        text = element.text
+        return text
+
+
+    def system_update(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.system_updates_id)))
+        element.click()
+
+    def system_update_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.system_update_xpath)))
+        text = element.text
+        return text
+
+    def ipv4(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.ipv4_id)))
+        element.click()
+
+    def ipv4_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.ipv4_xpath)))
+        text = element.text
+        return text
+
+    ######################
+    def ipv6(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.ipv6_id)))
+        element.click()
+
+    def ipv6_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.ipv6_xpath)))
+        text = element.text
+        return text
+
+    ####################
+    def regional(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.regional_id)))
+        element.click()
+
+    def regional_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.regional_xpath)))
+        text = element.text
+        return text
+
+    ###################
+    def character(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.character_set_id)))
+        element.click()
+
+    def character_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.character_xpath)))
+        text = element.text
+        return text
+
+    ###################
+    def print_start(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.print_start_page_id)))
+        element.click()
+
+    def print_start_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.print_start_xpath)))
+        text = element.text
+        return text
+
+    def system_update(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.system_updates_id)))
+        element.click()
+
+    def system_update_text(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.system_update_xpath)))
+        text = element.text
+        return text
+
+
+    def Fiery_server_name(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.Fiery_server_name_id)))
+        element.click()
+
+    def Cancel(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.cancel_xpath)))
+        self.driver.execute_script("window.scrollBy(0, 500);")
+        time.sleep(2)
+        element.click()
+
+    def Fiery_server_configure(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.Fiery_Server_option_xpath)))
+        text = element.text
+        return text
 
     def Proceed(self):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.Proceed_xpath)))

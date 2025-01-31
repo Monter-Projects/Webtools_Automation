@@ -8,6 +8,7 @@ from Utilites.ReadProperties import readconfig
 from Utilites.CustomLogger import LogGen
 import pytest_html
 from PageObjects.button_funtions import Button_checks
+from selenium.webdriver.common.keys import Keys
 
 class Test_001_button_checks:
     baseurl = readconfig.getappurl()
@@ -46,6 +47,11 @@ class Test_001_button_checks:
             self.driver.close()
             assert False
 
+    def outside_click(self):
+        outside_element = self.driver.find_element(By.TAG_NAME, "body")
+        actions = ActionChains(self.driver)
+        actions.move_to_element(outside_element).click().perform()
+
 
     # Test-Case-1
     # Test-Case to test Docs link
@@ -74,12 +80,7 @@ class Test_001_button_checks:
     # Test-Case-2
     # Test-case to test configure function
     def test_button_function_configure(self, setup):
-        self.home_page_launch(setup,configure=0)
-        self.bc.Configure()  # clicking the configure button
-        self.lp = Login(self.driver)
-        self.lp.set_webtools_username(self.username)
-        self.lp.set_webtools_password(self.password)
-        self.bc.login()
+        self.home_page_launch(setup,configure=1)
         Configure_title = "Configure"
         current_title = self.driver.title
         #configure_results = []
@@ -521,6 +522,167 @@ class Test_001_button_checks:
             self.driver.close()
             assert False
         self.driver.quit()
+
+
+    def test_Fiery_Server_function_configure(self, setup):
+        self.home_page_launch(setup,configure=1)
+        Configure_title = "Configure"
+        current_title = self.driver.title
+        #configure_results = []
+        configure_option_results = {"Server_name": "Pass", "IPv4_address": "Pass", "IPv6_address": "Pass",
+                            "Regional Settings": "Pass", "Use Character Set": "Pass", "Print Start Page": "Pass", "System Updates": "Pass",
+                                    "System Logs":"Pass", "Job-log" : "Pass", "Fiery Support Contact Information" : "Pass",
+                                    "Printer Support Contact Information" : "Pass", "Backup":"Pass", "Restore":"Pass", "Restore_default": "Pass"}
+        golden_configure_option_text = {"Server_name": "Server information", "IPv4_address": "IPv4 Address", "IPv6_address": "IPv6 Address",
+                            "Regional Settings": "Regional Settings", "Use Character Set": "Use Character Set", "Print Start Page": "Print Start Page", "System Updates": "System Updates"}
+                                    #"System Logs": "System Logs", "Job-log" : "Job Log", "Fiery Support Contact Information" : "Fiery Support Contact Information",
+                                    #"Printer Support Contact Information" : "Printer Support Contact Information", "Backup":"Backup", "Restore":"Restore", "Restore Default Fiery Settings": "Restore Default Fiery Settings"}
+        configure_option_text = {"Server_name": "", "IPv4_address": "", "IPv6_address": "",
+                            "Regional Settings": "", "Use Character Set": "", "Print Start Page": "", "System Updates": ""}
+                                    #"System Logs": "", "Job-log" : "", "Fiery Support Contact Information" : "",
+                                    #"Printer Support Contact Information" : "", "Backup":"", "Restore":"", "Restore Default Fiery Settings": ""}
+        if current_title == Configure_title:
+            self.logger.info("*************** Configure_Check_passed ******************")
+            print("Configure_check_test_is_passed")
+            self.driver.maximize_window()
+
+            # Fiery server option check
+            self.bc.Fiery_server_name()
+            Server_name_text = self.bc.Fiery_server_configure()
+            configure_option_text["Server_name"]= Server_name_text
+            self.outside_click()
+
+            #ipv4 option check
+            self.bc.ipv4()
+            ipv4_name_text = self.bc.ipv4_text()
+            configure_option_text["IPv4_address"] = ipv4_name_text
+            self.outside_click()
+
+            #ipv6 option check
+            self.bc.ipv6()
+            ipv6_name_text = self.bc.ipv6_text()
+            configure_option_text["IPv6_address"] = ipv6_name_text
+            self.outside_click()
+
+            #regional option check
+            self.bc.regional()
+            regional_name_text = self.bc.regional_text()
+            configure_option_text["Regional Settings"] = regional_name_text
+            self.outside_click()
+
+            #character option check
+            self.bc.character()
+            character_name_text = self.bc.character_text()
+            configure_option_text["Use Character Set"] = character_name_text
+            self.outside_click()
+
+            #print start option check
+            self.bc.print_start()
+            print_start_text = self.bc.print_start_text()
+            configure_option_text["Print Start Page"] = print_start_text
+            self.outside_click()
+
+            #system-update option check
+            self.bc.system_update()
+            system_update_text = self.bc.system_update_text()
+            configure_option_text["System Updates"] = system_update_text
+            self.outside_click()
+
+            if golden_configure_option_text == configure_option_text:
+                self.logger.info("*************** Fiery_Configure_Server_Click_Check_passed ******************")
+                print("Fiery_Configure_Server_Click_check_test_is_passed")
+                self.driver.close()
+                assert True
+            else:
+                self.logger.info("*************** Fiery_Configure_Server_Click_Check_Failed ******************")
+                print("Fiery_Configure_Server_Click_check_test_is_Failed")
+                self.driver.close()
+                assert False
+
+
+    def test_ipv4_function_configure(self, setup):
+        self.home_page_launch(setup, configure=1)
+        Configure_title = "Configure"
+        current_title = self.driver.title
+        golden_configure_option_text = {"System Logs": "System Logs", "Job-log" : "Job Log", "Fiery Support Contact Information" : "Fiery Support Contact Information",
+                                        "Printer Support Contact Information" : "Printer Support Contact Information", "Backup":"Backup", "Restore":"Restore", "Restore Default Fiery Settings": "Restore Default Fiery Settings"}
+        configure_option_text = {"System Logs": "", "Job-log" : "", "Fiery Support Contact Information" : "",
+                                 "Printer Support Contact Information" : "", "Backup":"", "Restore":"", "Restore Default Fiery Settings": ""}
+        if current_title == Configure_title:
+            self.logger.info("*************** Configure_Check_passed ******************")
+            print("Configure_check_test_is_passed")
+            self.driver.maximize_window()
+
+            # system logs option check
+            self.bc.system_logs()
+            system_log_text = self.bc.system_logs_text()
+            configure_option_text["System Logs"] = system_log_text
+            self.outside_click()
+
+            # job logs option check
+            self.bc.jobs_logs()
+            jobs_logs_text = self.bc.jobs_logs_text()
+            configure_option_text["Job-log"] = jobs_logs_text
+            self.outside_click()
+
+            # fiery support option check
+            self.bc.fiery_support()
+            fiery_support_text = self.bc.fiery_support_text()
+            configure_option_text["Fiery Support Contact Information"] = fiery_support_text
+            self.outside_click()
+
+            # print support option check
+            self.bc.print_support()
+            print_support_text = self.bc.print_support_text()
+            configure_option_text["Printer Support Contact Information"] = print_support_text
+            self.outside_click()
+
+            # backup option check
+            self.bc.backup()
+            backup_text = self.bc.backup_text()
+            configure_option_text["Backup"] = backup_text
+            self.outside_click()
+
+            #link restore option check
+            self.bc.link_restore()
+            link_restore_text = self.bc.link_restore_text()
+            configure_option_text["Restore"] = link_restore_text
+            self.outside_click()
+
+            #restore default option check
+            self.bc.restore_default()
+            restore_default_text = self.bc.restore_default_text()
+            configure_option_text["Restore Default Fiery Settings"] = restore_default_text
+            self.outside_click()
+
+            if golden_configure_option_text == configure_option_text:
+                self.logger.info("*************** Fiery_Configure_Server_Click_Check_passed ******************")
+                print("Fiery_Configure_Server_Click_check_test_is_passed")
+                self.driver.close()
+                assert True
+            else:
+                self.logger.info("*************** Fiery_Configure_Server_Click_Check_Failed ******************")
+                print("Fiery_Configure_Server_Click_check_test_is_Failed")
+                self.driver.close()
+                assert False
+
+
+
+
+
+
+
+
+
+
+            
+
+            
+
+
+
+
+
 
 
 
