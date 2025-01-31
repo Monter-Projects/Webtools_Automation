@@ -50,7 +50,7 @@ class Test_001_button_checks:
             assert False
 
     def outside_click(self):
-        outside_element = WebDriverWait.until(EC.element_to_be_clickable((By.TAG_NAME, "body")))
+        outside_element = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.TAG_NAME, "body")))
         actions = ActionChains(self.driver)
         actions.move_to_element(outside_element).click().perform()
 
