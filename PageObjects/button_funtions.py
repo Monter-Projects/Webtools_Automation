@@ -78,6 +78,8 @@ class Button_checks:
     backup_xpath = "//*[@id='backup_popup_title']/h3"
     restore_xpath = "//*[@id='restore_popup_title']/h3"
     restore_default_xpath = "//*[@id='restore_default_popup_title']/h3"
+
+
     Fiery_server_name_id = "link_server_name"
 
     cancel_id = "cancel"
@@ -96,13 +98,17 @@ class Button_checks:
     print_support_id = "link_server_support_printer_contact_name"
     backup_id = "link_backup"
     link_restore_id = "link_restore"
-    restore_default_id = "link_restore_default_fiery_settings"
+    #restore_default_id = "link_restore_default_fiery_settings"
     print_start_page_id = "server_print_start_page"
     restart_button_id = "link_restart_reboot"
     check_box_status = "server_print_start_page"
+    restore_default_Xpath = "//*[@id='link_restore_default_fiery_settings']/h3"
     # actiont to start driver
     def __init__(self,driver):
         self.driver = driver
+
+    def scroll(self):
+        self.driver.execute_script("window.scrollBy(0, 1000);")
 
     def checkbox(self):
         checkbox = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.print_start_page_id)))
@@ -122,10 +128,8 @@ class Button_checks:
         return text
 
     def restore_default(self):
-        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.restore_default_id)))
-        text = element.text
-        return text
-
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.restore_default_Xpath)))
+        element.click()
 
     def link_restore(self):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.link_restore_id)))

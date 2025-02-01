@@ -672,11 +672,15 @@ class Test_001_button_checks:
             self.outside_click()
             time.sleep(2)
             #restore default option check
+            self.bc.scroll()
+            time.sleep(5)
             self.bc.restore_default()
             restore_default_text = self.bc.restore_default_text()
             configure_option_text["Restore Default Fiery Settings"] = restore_default_text
             self.outside_click()
             time.sleep(2)
+            print(golden_configure_option_text)
+            print(configure_option_text)
             if golden_configure_option_text == configure_option_text:
                 self.logger.info("*************** Fiery_Configure_Server_Click_Check_passed ******************")
                 print("Fiery_Configure_Server_Click_check_test_is_passed")
