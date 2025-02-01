@@ -121,6 +121,11 @@ class Button_checks:
         text = element.text
         return text
 
+    def restore_default(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.restore_default_id)))
+        text = element.text
+        return text
+
 
     def link_restore(self):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.link_restore_id)))
