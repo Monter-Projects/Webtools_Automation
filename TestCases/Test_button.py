@@ -60,7 +60,7 @@ class Test_001_button_checks:
             assert False
 
     def outside_click(self):
-        outside_element = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.TAG_NAME, "body")))
+        outside_element = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='campfire_form']/div/div[2]/div[1]/h1")))
         actions = ActionChains(self.driver)
         actions.move_to_element(outside_element).click().perform()
 
@@ -607,6 +607,8 @@ class Test_001_button_checks:
             configure_option_text["System Updates"] = system_update_text
             self.outside_click()
             time.sleep(2)
+            print(golden_configure_option_text)
+            print(configure_option_text)
             if golden_configure_option_text == configure_option_text:
                 self.logger.info("*************** Fiery_Configure_Server_Click_Check_passed ******************")
                 print("Fiery_Configure_Server_Click_check_test_is_passed")

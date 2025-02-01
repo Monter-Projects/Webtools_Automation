@@ -88,7 +88,7 @@ class Button_checks:
     ipv6_id = "link_server_ip_v6_enabled"
     regional_id = "link_server_locale"
     character_set_id = "link_server_use_character_set"
-    print_start_page_id = "link_server_print_start_page"
+    print_start_id = "link_server_print_start_page"
     system_updates_id = "link_server_enable_system_updates"
     system_logs_id = "link_server_enable_system_log"
     job_log_id = "link_server_enable_joblog_auto_export"
@@ -234,7 +234,7 @@ class Button_checks:
 
     ###################
     def print_start(self):
-        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.print_start_page_id)))
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.print_start_id)))
         element.click()
 
     def print_start_text(self):
