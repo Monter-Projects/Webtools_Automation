@@ -7,7 +7,7 @@ import time
 from selenium.webdriver.chrome.options import Options
 
 chrome_options = Options()
-chrome_options.add_argument("--headless")  # Run in headless mode
+#chrome_options.add_argument("--headless")  # Run in headless mode
 chrome_options.add_argument("--disable-gpu")
 chrome_options.add_argument("--window-size=1920,1080")  # Ensure a full-screen size
 chrome_options.add_argument("--disable-dev-shm-usage")
@@ -97,12 +97,23 @@ class Button_checks:
     backup_id = "link_backup"
     link_restore_id = "link_restore"
     restore_default_id = "link_restore_default_fiery_settings"
+    print_start_page_id = "server_print_start_page"
+    restart_button_id = "link_restart_reboot"
+    check_box_status = "server_print_start_page"
     # actiont to start driver
     def __init__(self,driver):
         self.driver = driver
 
-    def restore_default(self):
-        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.restore_default_id)))
+    def checkbox(self):
+        checkbox = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.print_start_page_id)))
+        return checkbox
+
+    def print_start_page(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.print_start_page_id)))
+        element.click()
+
+    def restart_button(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.restart_button_id)))
         element.click()
 
     def restore_default_text(self):

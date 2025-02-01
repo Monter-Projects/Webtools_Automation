@@ -64,6 +64,13 @@ class Test_001_button_checks:
         actions = ActionChains(self.driver)
         actions.move_to_element(outside_element).click().perform()
 
+    def configure_login(self):
+        self.bc.Configure()  # clicking the configure button
+        self.lp = Login(self.driver)
+        self.lp.set_webtools_username(self.username)
+        self.lp.set_webtools_password(self.password)
+        self.bc.login()
+
 
     # Test-Case-1
     # Test-Case to test Docs link
@@ -678,6 +685,62 @@ class Test_001_button_checks:
                 print("Fiery_Configure_Server_Click_check_test_is_Failed")
                 self.driver.close()
                 assert False
+
+    # checking print start-page functionality
+    def test_print_start_page(self, setup):
+        self.home_page_launch(setup, configure=1)
+        Configure_title = "Configure"
+        current_title = self.driver.title
+        #golden_configure_option_text = {"System Logs": "System Logs", "Job-log" : "Job Log", "Fiery Support Contact Information" : "Fiery Support Contact Information",
+        #                                "Printer Support Contact Information" : "Printer Support Contact Information", "Backup":"Backup", "Restore":"Restore", "Restore Default Fiery Settings": "Restore Default Fiery Settings"}
+        #configure_option_text = {"System Logs": "", "Job-log" : "", "Fiery Support Contact Information" : "",
+        #                         "Printer Support Contact Information" : "", "Backup":"", "Restore":"", "Restore Default Fiery Settings": ""}
+        if current_title == Configure_title:
+            self.logger.info("*************** Configure_Check_passed ******************")
+            print("Configure_check_test_is_passed")
+            self.driver.maximize_window()
+
+            time.sleep(2)
+            self.bc.print_start_page()
+            self.bc.restart_button()
+            for i in range(10):
+                time.sleep(2)
+                Home_page_title = "WebTools"
+                #self.driver = setup
+                self.driver.get(self.baseurl)
+                #self.bc.Advanced()
+                #self.bc.Proceed()  # It will point to home page
+                time.sleep(2)
+                current_title = self.driver.title
+                if current_title == Home_page_title:
+                    pass
+                    #self.logger.info("*************** Home_Page_click_passed ******************")
+                    #print("Home_Page_click_test_is_passed")
+                else:
+                    #self.driver.close()
+                    pass
+        else:
+            self.logger.info("*************** Configure_Check_failed ******************")
+            print("Configure_check_test_is_failed")
+
+        self.configure_login()
+        checkbox_status = self.bc.checkbox()
+        if checkbox_status.is_selected():
+            self.logger.info("*************** print_start_page_Check_passed ******************")
+            print("Checkbox is checked")
+            self.driver.close()
+            assert True
+        else:
+            self.logger.info("*************** print_start_page_Check_failed ******************")
+            print("Checkbox is unchecked")
+            self.driver.close()
+            assert False
+
+
+
+
+
+
 
 
 
