@@ -78,14 +78,15 @@ class Button_checks:
     backup_xpath = "//*[@id='backup_popup_title']/h3"
     restore_xpath = "//*[@id='restore_popup_title']/h3"
     restore_default_xpath = "//*[@id='restore_default_popup_title']/h3"
-
-
-    Fiery_server_name_id = "link_server_name"
-
-    cancel_id = "cancel"
-
     cancel_xpath = "//*[@id='cancel']"
+    restore_default_Xpath = "//*[@id='link_restore_default_fiery_settings']/h3"
+    secure_erase_xpath = "//*[@id='link_server_secure_erase']/h3"
+    fiery_true_brand_xpath = "//*[@id='id-truebrand-link']/img"
+    secure_save_id = "ok"
 
+    # All ID's
+    cancel_id = "cancel"
+    Fiery_server_name_id = "link_server_name"
     ipv4_id = "link_server_ip_address"
     ipv6_id = "link_server_ip_v6_enabled"
     regional_id = "link_server_locale"
@@ -102,10 +103,77 @@ class Button_checks:
     print_start_page_id = "server_print_start_page"
     restart_button_id = "link_restart_reboot"
     check_box_status = "server_print_start_page"
-    restore_default_Xpath = "//*[@id='link_restore_default_fiery_settings']/h3"
+    secure_erase_checkbox_id = "server_secure_erase"
+    true_brand_user_id = "inputUser"
+    true_brand_pass_id = "inputPassword"
+    true_login_button_id = "btnLogin"
+
+
     # actiont to start driver
     def __init__(self,driver):
         self.driver = driver
+
+    def secure_save(self):
+        # Handle overlays
+        try:
+            self.driver.execute_script("document.querySelector('.overlay-content, .modal, .popup').remove();")
+        except:
+            pass  # Ignore if there's no overlay
+
+        # Check if inside an iframe
+        try:
+            iframe = self.driver.find_element(By.TAG_NAME, "iframe")
+            self.driver.switch_to.frame(iframe)
+        except:
+            pass  # Ignore if no iframe
+
+        # Wait for the button to be visible and clickable
+        element = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.ID, self.secure_save_id)))
+
+        # Scroll to the button
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+
+        # Move to the button and click
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).click().perform()
+
+    '''
+    def secure_save(self):
+        WebDriverWait(self.driver, 30).until(EC.invisibility_of_element_located((By.CLASS_NAME, "overlay-button")))
+        element = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.ID, self.secure_save_id)))
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+        try:
+            element.click()
+        except:
+            self.driver.execute_script("arguments[0].click();", element)
+    '''
+
+    def secure_erase_checkbox(self):
+        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.CLASS_NAME, "overlay-content scroller dirty")))
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.secure_erase_checkbox_id)))
+        element.click()
+
+    def true_band(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.fiery_true_brand_xpath)))
+        element.click()
+
+    def true_login_button(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.true_login_button_id)))
+        element.click()
+
+    def true_username(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.true_brand_user_id)))
+        element.clear()
+        element.send_keys("Admin")
+
+    def true_password(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.true_brand_pass_id)))
+        element.clear()
+        element.send_keys("Fiery.1")
+
+    def secure_erase(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.secure_erase_xpath)))
+        element.click()
 
     def scroll(self):
         self.driver.execute_script("window.scrollBy(0, 1000);")

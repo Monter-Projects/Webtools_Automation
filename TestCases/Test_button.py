@@ -742,6 +742,36 @@ class Test_001_button_checks:
             self.driver.close()
             assert False
 
+    #Checking secure erase options
+    def test_band_login(self, setup):
+        self.home_page_launch(setup, configure=0)
+        self.bc.scroll()
+        self.bc.true_band()
+        time.sleep(2)
+        window_handles = self.driver.window_handles
+        self.driver.switch_to.window(window_handles[-1])
+        self.bc.true_username()
+        self.bc.true_password()
+        self.bc.true_login_button()
+        true_band_title = self.driver.title
+        if true_band_title == "TrueBrandApp":
+            self.logger.info("*************** TrueBrandApp login sucessful******************")
+            print("TrueBrandApp login sucessful")
+            self.driver.close()
+            assert True
+        else:
+            self.logger.info("*************** TrueBrandApp login failed******************")
+            print("TrueBrandApp login failed")
+            self.driver.close()
+            assert False
+
+
+
+
+
+
+
+
 
 
 
