@@ -746,6 +746,7 @@ class Test_001_button_checks:
     def test_band_login(self, setup):
         self.home_page_launch(setup, configure=0)
         self.bc.scroll()
+        time.sleep(5)
         self.bc.true_band()
         time.sleep(2)
         window_handles = self.driver.window_handles
