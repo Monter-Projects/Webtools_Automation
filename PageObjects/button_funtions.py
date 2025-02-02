@@ -107,6 +107,7 @@ class Button_checks:
     true_brand_user_id = "inputUser"
     true_brand_pass_id = "inputPassword"
     true_login_button_id = "btnLogin"
+    true_band_box_xpath = "//*[@id='available_apps']/div/div[3]/div[2]/div[2]"
 
 
     # actiont to start driver
@@ -151,6 +152,10 @@ class Button_checks:
     def secure_erase_checkbox(self):
         WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.CLASS_NAME, "overlay-content scroller dirty")))
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.secure_erase_checkbox_id)))
+        element.click()
+
+    def true_band_box(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.true_band_box_xpath)))
         element.click()
 
     def true_band(self):
