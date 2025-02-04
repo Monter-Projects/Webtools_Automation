@@ -12,6 +12,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+import pyautogui
 
 
 chrome_options = Options()
@@ -768,6 +769,64 @@ class Test_001_button_checks:
             self.driver.close()
             assert False
 
+    # testing secure erase option checks
+    def test_secure_erase_function(self, setup):
+        self.home_page_launch(setup, configure=1)
+        Configure_title = "Configure"
+        current_title = self.driver.title
+        #golden_configure_option_text = {"System Logs": "System Logs", "Job-log" : "Job Log", "Fiery Support Contact Information" : "Fiery Support Contact Information",
+        #                                "Printer Support Contact Information" : "Printer Support Contact Information", "Backup":"Backup", "Restore":"Restore", "Restore Default Fiery Settings": "Restore Default Fiery Settings"}
+        #configure_option_text = {"System Logs": "", "Job-log" : "", "Fiery Support Contact Information" : "",
+        #                         "Printer Support Contact Information" : "", "Backup":"", "Restore":"", "Restore Default Fiery Settings": ""}
+        if current_title == Configure_title:
+            self.logger.info("*************** Configure_Check_passed ******************")
+            print("Configure_check_test_is_passed")
+            self.driver.maximize_window()
+            time.sleep(2)
+            self.bc.security()
+            self.bc.secure_erase()
+            self.bc.secure_erase_checkbox()
+            self.bc.scroll()
+            time.sleep(3)
+            savebut = pyautogui.locateCenterOnScreen("save.png", confidence=0.8)
+            pyautogui.moveTo(savebut, duration=1)
+            pyautogui.click()
+            time.sleep(3)
+            self.bc.restart_button()
+            for i in range(10):
+                time.sleep(2)
+                Home_page_title = "WebTools"
+                # self.driver = setup
+                self.driver.get(self.baseurl)
+                # self.bc.Advanced()
+                # self.bc.Proceed()  # It will point to home page
+                time.sleep(2)
+                current_title = self.driver.title
+                if current_title == Home_page_title:
+                    pass
+                    # self.logger.info("*************** Home_Page_click_passed ******************")
+                    # print("Home_Page_click_test_is_passed")
+                else:
+                    # self.driver.close()
+                    pass
+        else:
+            self.logger.info("*************** Configure_Check_failed ******************")
+            print("Configure_check_test_is_failed")
+
+        self.configure_login()
+        self.bc.security()
+        self.bc.secure_erase()
+        checkbox_status = self.bc.secure_erase_checkbox_status()
+        if checkbox_status.is_selected():
+            self.logger.info("*************** Secure_erase_Check_passed ******************")
+            print("Secure_erase_Checkbox is checked")
+            self.driver.close()
+            assert True
+        else:
+            self.logger.info("*************** Secure_erase_Check_failed ******************")
+            print("Secure_erase_Checkbox is unchecked")
+            self.driver.close()
+            assert False
 
 
 
