@@ -10,9 +10,11 @@ import pytest_html
 from PageObjects.button_funtions import Button_checks
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 import pyautogui
+from PIL import ImageGrab
 
 
 chrome_options = Options()
@@ -28,6 +30,14 @@ class Test_001_button_checks:
     username = readconfig.get_webtoolsusername()
     password = readconfig.get_webtoolspassword()
     logger = LogGen.loggen()
+
+    @pytest.fixture()
+    def IP(request):
+        return request.config.getoption("--IP")
+
+    @pytest.fixture()
+    def url(IP):
+        return IP
 
     # common function which launches web-tools main-page
     def home_page_launch(self, setup, configure):
@@ -774,10 +784,6 @@ class Test_001_button_checks:
         self.home_page_launch(setup, configure=1)
         Configure_title = "Configure"
         current_title = self.driver.title
-        #golden_configure_option_text = {"System Logs": "System Logs", "Job-log" : "Job Log", "Fiery Support Contact Information" : "Fiery Support Contact Information",
-        #                                "Printer Support Contact Information" : "Printer Support Contact Information", "Backup":"Backup", "Restore":"Restore", "Restore Default Fiery Settings": "Restore Default Fiery Settings"}
-        #configure_option_text = {"System Logs": "", "Job-log" : "", "Fiery Support Contact Information" : "",
-        #                         "Printer Support Contact Information" : "", "Backup":"", "Restore":"", "Restore Default Fiery Settings": ""}
         if current_title == Configure_title:
             self.logger.info("*************** Configure_Check_passed ******************")
             print("Configure_check_test_is_passed")
@@ -827,6 +833,78 @@ class Test_001_button_checks:
             print("Secure_erase_Checkbox is unchecked")
             self.driver.close()
             assert False
+
+
+    # Test case to get count of regional languages
+    def test_languages_count(self, setup):
+        self.home_page_launch(setup, configure=1)
+        Configure_title = "Configure"
+        current_title = self.driver.title
+        if current_title == Configure_title:
+            self.logger.info("*************** Configure_Check_passed ******************")
+            print("Configure_check_test_is_passed")
+            self.driver.maximize_window()
+            time.sleep(2)
+            self.bc.regional_settings()
+            select = self.bc.select_language()
+            select_langauge = Select(select)
+            # select the language with visible text
+            #select_language.select_by_visible_text('English US')
+            language_options_count = len(select_langauge.options)
+            print("Options-Count: ", language_options_count)
+            if language_options_count == 16:
+                self.logger.info("*************** All language options are available by count ******************")
+                print("All language options are available by count")
+                self.driver.close()
+                assert True
+            else:
+                print("Missing some language options by count")
+                self.driver.close()
+                assert False
+        else:
+            self.logger.info("*************** Problem in launching web-tools configure by count ******************")
+            print("Problem in launching web-tools configure by count")
+            self.driver.close()
+            assert False
+
+    # Test case to list all the language options
+    def test_languages_options(self, setup):
+        self.home_page_launch(setup, configure=1)
+        Configure_title = "Configure"
+        current_title = self.driver.title
+        if current_title == Configure_title:
+            self.logger.info("*************** Configure_Check_passed ******************")
+            print("Configure_check_test_is_passed")
+            self.driver.maximize_window()
+            time.sleep(2)
+            self.bc.regional_settings()
+            select = self.bc.select_language()
+            select_langauge = Select(select)
+            # select the language with visible text
+            #select_language.select_by_visible_text('English US')
+            language_options = select_langauge.options
+            languages_present_golden = ['English International', 'English US', 'Français', 'Nederlands', 'Italiano', 'Deutsch', 'Español', 'Português brasileiro', '日本語', '简体中文', 'Русский', 'Türkçe', 'Polski', 'Čeština', '繁體中文', '한국어']
+            languages_present = []
+            print(language_options)
+            for option in language_options:
+                languages_present.append(option.text)
+            print(languages_present)
+            if languages_present == languages_present_golden:
+                self.logger.info("*************** All language options are available by text ******************")
+                print("All language options are available by text")
+                self.driver.close()
+                assert True
+            else:
+                self.logger.info("*************** All language options are not available by text ******************")
+                print("All language options are not available by text")
+                self.driver.close()
+                assert False
+        else:
+            self.logger.info("*************** Problem in launching web-tools configure by count ******************")
+            print("Problem in launching web-tools configure by count")
+            self.driver.close()
+            assert False
+
 
 
 

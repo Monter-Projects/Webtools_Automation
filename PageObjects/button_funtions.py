@@ -109,6 +109,8 @@ class Button_checks:
     true_login_button_id = "btnLogin"
     true_band_box_xpath = "//*[@id='available_apps']/div/div[3]/div[2]/div[2]"
     overlay_xpath = "//*[@id='secure_erase_popup']/div[3]"
+    regional_xpath = "//*[@id='link_server_locale']/h3"
+    language_select_id = "server_locale"
 
 
     # actiont to start driver
@@ -149,6 +151,15 @@ class Button_checks:
         except:
             self.driver.execute_script("arguments[0].click();", element)
     '''
+
+    def regional_settings(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.regional_xpath)))
+        element.click()
+
+    def select_language(self):
+        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, self.language_select_id)))
+        return element
+        #element.click()
 
     def overlay(self):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.overlay_xpath)))

@@ -25,12 +25,25 @@ def setup(browser):
         driver.implicitly_wait(10)
     return driver
 
+@pytest.fixture()
+def url(IP):
+    url = "https://" + IP + "/wt4/home"
+    return url
+
 def pytest_addoption(parser):
+    parser.addoption("--IP", action="store", default="dev", help="Environment: Server-IP")
     parser.addoption("--browser")
+
 
 @pytest.fixture()
 def browser(request):
     return request.config.getoption("--browser")
+
+@pytest.fixture()
+def IP(request):
+    return request.config.getoption("--IP")
+
+
 
 ########## Pytest HTML report ######################
 @pytest.hookimpl(optionalhook=True)
