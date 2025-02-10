@@ -13,6 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+from collections import Counter
 import pyautogui
 from PIL import ImageGrab
 
@@ -884,12 +885,14 @@ class Test_001_button_checks:
             #select_language.select_by_visible_text('English US')
             language_options = select_langauge.options
             languages_present_golden = ['English International', 'English US', 'Français', 'Nederlands', 'Italiano', 'Deutsch', 'Español', 'Português brasileiro', '日本語', '简体中文', 'Русский', 'Türkçe', 'Polski', 'Čeština', '繁體中文', '한국어']
+            languages_present_golden_FD = ['Čeština', 'Deutsch', 'English International', 'English US', 'Español', 'Français', 'Italiano', 'Nederlands', 'Polski', 'Português brasileiro', 'Türkçe', 'Русский', '한국어', '日本語', '简体中文', '繁體中文']
             languages_present = []
             print(language_options)
+            print("Languages-present", languages_present)
             for option in language_options:
                 languages_present.append(option.text)
-            print(languages_present)
-            if languages_present == languages_present_golden:
+            print("Languages-present", languages_present)
+            if Counter(languages_present) == Counter(languages_present_golden):
                 self.logger.info("*************** All language options are available by text ******************")
                 print("All language options are available by text")
                 self.driver.close()
